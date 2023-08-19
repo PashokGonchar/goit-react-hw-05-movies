@@ -1,6 +1,6 @@
 import { getTrending } from 'api';
-import Movies from '../../components/Movies/Movies';
 import { useState, useEffect } from 'react';
+import Home from 'components/Home/Home';
 
 export default function HomePages() {
   const [movies, setMovies] = useState([]);
@@ -21,7 +21,7 @@ export default function HomePages() {
   return (
     <main>
       <h1>Trending today</h1>
-      <ul>{movies.length !== 0 && <Movies movies={movies} />}</ul>
+      <ul>{movies.length !== 0 && <Home movies={movies} />}</ul>
     </main>
   );
 }

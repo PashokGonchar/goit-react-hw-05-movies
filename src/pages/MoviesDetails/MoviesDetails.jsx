@@ -3,7 +3,7 @@ import MovieDetails from 'components/MovieDetails/MovieDetails';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
-export default function Movies() {
+export default function MoviesDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
   const { movieId } = useParams();
 
