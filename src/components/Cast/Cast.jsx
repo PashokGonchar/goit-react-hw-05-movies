@@ -1,6 +1,7 @@
 import { getMovieCredits } from "api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ImgCast, LiCast, UlCast } from "./Cast.styled";
 
 
 export default function Cast() {
@@ -19,21 +20,21 @@ export default function Cast() {
   }, [movieId]);
 
   return (
-    <ul>
+    <UlCast>
       {cast.map(({ name, profile_path, character }, index) => {
         return (
-          <li key={index}>
+          <LiCast  key={index}>
             {profile_path && (
-              <img
+              <ImgCast
                 src={`https://image.tmdb.org/t/p/w500${profile_path}`}
                 alt={name}
               />
             )}
             <p>{name}</p>
             <p>{`Character: ${character}`}</p>
-          </li>
+          </LiCast>
         );
       })}
-    </ul>
+    </UlCast>
   );
 }

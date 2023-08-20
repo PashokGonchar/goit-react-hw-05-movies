@@ -2,6 +2,7 @@ import { searchMovies } from "api";
 import Movies from "components/Movies/Movies";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { FormMovies } from "./Movies.styled";
 
 
 export default function MoviesSearchPages() {
@@ -34,10 +35,11 @@ export default function MoviesSearchPages() {
 
     return (
         <main>
-            <form onSubmit={handleSubmit}>
+            <FormMovies
+                onSubmit={handleSubmit}>
                 <input type="text" onChange={handleChange} value={query} />
                 <button onClick={()=> onClickSearch(query)}>Search</button>
-            </form>
+            </FormMovies>
             {moviesSearch.length !== 0 && <Movies movies={moviesSearch} />}
     </main>
 )

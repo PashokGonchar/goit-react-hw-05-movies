@@ -1,7 +1,8 @@
 import { getMovieDetails } from '../../api/index';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import {useLocation, useParams } from 'react-router-dom';
+import { DivInfoMoviesDetails, DivTextMoviesDetails, ImgMoviesDetails, LinkMoviesDetails } from './MoviesDetails.styled';
 
 export default function MoviesDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -42,31 +43,31 @@ const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/i
     return (
       <>
         {locationRef.current && (
-          <Link
+          <LinkMoviesDetails
             to={locationRef.current.location}
             state={locationRef.current.search}
           >
             &#8592; Go back
-          </Link>
+          </LinkMoviesDetails>
         )}
-        <div>
-          <img
+        <DivInfoMoviesDetails>
+          <ImgMoviesDetails
             src={
-             movieDetails.poster_path
+              movieDetails.poster_path
                 ? `https://image.tmdb.org/t/p/w500${poster_path}`
                 : defaultImg
             }
             alt={title}
           />
-          <div>
+          <DivTextMoviesDetails>
             <h2>{`${title} (${release_date.slice(0, 4)})`}</h2>
             <p>{`User score: ${(vote_average * 10).toFixed(2)}%`}</p>
             <h3>Overview</h3>
             <p>{overview}</p>
             <h3>Genres</h3>
             <p>{genres.map(({ name }) => `${name} `)}</p>
-          </div>
-        </div>
+          </DivTextMoviesDetails>
+        </DivInfoMoviesDetails>
         <p>Additional information</p>
         <MovieDetails />
       </>

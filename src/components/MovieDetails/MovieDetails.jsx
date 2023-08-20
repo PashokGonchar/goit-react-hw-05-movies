@@ -1,4 +1,5 @@
 import { Link, Outlet, useParams } from 'react-router-dom';
+import { ListMoviesDetails } from './MovieDetails.styled';
 
 
 export default function MovieDetails() {
@@ -7,7 +8,7 @@ export default function MovieDetails() {
 
   return (
     <>
-      <ul>
+      <ListMoviesDetails>
         {NAVIGATION.map((page, index) => {
           return (
             <li key={index}>
@@ -19,7 +20,7 @@ export default function MovieDetails() {
             </li>
           );
         })}
-      </ul>
+      </ListMoviesDetails>
       <Outlet />
     </>
   );
