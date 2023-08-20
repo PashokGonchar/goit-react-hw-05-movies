@@ -6,7 +6,8 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 export default function MoviesDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
   const { movieId } = useParams();
-
+const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+  
   const locationRef = useRef(useLocation().state);
 
   useEffect(() => {
@@ -50,7 +51,11 @@ export default function MoviesDetails() {
         )}
         <div>
           <img
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            src={
+             movieDetails.poster_path
+                ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                : defaultImg
+            }
             alt={title}
           />
           <div>
