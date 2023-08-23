@@ -1,14 +1,20 @@
 import { getMovieDetails } from '../../api/index';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
 import { useEffect, useRef, useState } from 'react';
-import {useLocation, useParams } from 'react-router-dom';
-import { DivInfoMoviesDetails, DivTextMoviesDetails, ImgMoviesDetails, LinkMoviesDetails } from './MoviesDetails.styled';
+import { useLocation, useParams } from 'react-router-dom';
+import {
+  DivInfoMoviesDetails,
+  DivTextMoviesDetails,
+  ImgMoviesDetails,
+  LinkMoviesDetails,
+} from './MoviesDetails.styled';
 
 export default function MoviesDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
   const { movieId } = useParams();
-const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
-  
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+
   const locationRef = useRef(useLocation().state);
 
   useEffect(() => {
@@ -44,7 +50,12 @@ const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/i
       <>
         {locationRef.current && (
           <LinkMoviesDetails
-            to={locationRef.current.location}
+            to={
+              locationRef.current.location +
+              (locationRef.current.search
+                ? `?query=${locationRef.current.search}`
+                : '')
+            }
             state={locationRef.current.search}
           >
             &#8592; Go back
